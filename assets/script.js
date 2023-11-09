@@ -101,5 +101,44 @@ function displayImages(images) {
     buttonContainer.appendChild(button2);
     cardSection.appendChild(hideMinuts);
     photoContainer.appendChild(cardContainer);
+
+    //Funzione per il bottone Hide
+
+    button2.onclick = function () {
+      cardContainer.remove();
+    };
   });
 }
+
+//Funzione per il bottone load images and load secondary images
+
+loadBtn1.onclick = function () {
+  fetch(url2, {
+    method: "GET",
+    headers: {
+      Authorization: apiKey
+    }
+  })
+    .then((raw) => {
+      return raw.json();
+    })
+    .then((landscape) => {
+      photoContainer.innerHTML = "";
+      displayImages(landscape.photos);
+    });
+};
+loadBtn2.onclick = function () {
+  fetch(url3, {
+    method: "GET",
+    headers: {
+      Authorization: apiKey
+    }
+  })
+    .then((raw) => {
+      return raw.json();
+    })
+    .then((horses) => {
+      photoContainer.innerHTML = "";
+      displayImages(horses.photos);
+    });
+};

@@ -48,9 +48,6 @@ function displayImages(images) {
     const cardBody = document.createElement("div");
     cardBody.className = "card-body";
 
-    const titleAnchor = document.createElement("a");
-    titleAnchor.href = "./Detail-template.html";
-
     const title = document.createElement("h5");
     title.className = "card-title";
     title.textContent = image.photographer;
@@ -91,7 +88,6 @@ function displayImages(images) {
     card.appendChild(imgContainer);
     imgContainer.appendChild(imgAnchor);
     imgAnchor.appendChild(img);
-    titleAnchor.appendChild(title);
     card.appendChild(cardBody);
     cardBody.appendChild(title);
     cardBody.appendChild(text);

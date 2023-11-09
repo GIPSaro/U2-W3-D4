@@ -6,7 +6,7 @@ const url3 = "https://api.pexels.com/v1/search?query=horses";
 const photoContainer = document.getElementById("photoContainer");
 const loadBtn1 = document.getElementById("btn1");
 const loadBtn2 = document.getElementById("btn2");
-
+const
 window.onload = function () {
   fetch(url, {
     method: "GET",
@@ -38,7 +38,7 @@ function displayImages(images) {
     imgContainer.classList.add("d-flex", "justify-content-center");
 
     const imgAnchor = document.createElement("a");
-    imgAnchor.href = "./Detail-template.html";
+    imgAnchor.href = "";
 
     const img = document.createElement("img");
     img.className = "card-body";
@@ -47,6 +47,9 @@ function displayImages(images) {
 
     const cardBody = document.createElement("div");
     cardBody.className = "card-body";
+
+    const titleAnchor = document.createElement("a");
+    titleAnchor.href = "";
 
     const title = document.createElement("h5");
     title.className = "card-title";
@@ -90,6 +93,7 @@ function displayImages(images) {
     imgAnchor.appendChild(img);
     card.appendChild(cardBody);
     cardBody.appendChild(title);
+    title.appendChild(titleAnchor);
     cardBody.appendChild(text);
     cardBody.appendChild(cardSection);
     cardSection.appendChild(buttonContainer);
@@ -102,6 +106,13 @@ function displayImages(images) {
 
     button2.onclick = function () {
       cardContainer.remove();
+
+      imgAnchor.onclick = function () {
+        const selectedImages = image.id;
+
+        const stringObj = JSON.stringify(selectedImages);
+        sessionStorage.setItem("selectedItem", stringObj);
+      };
     };
   });
 }
@@ -138,3 +149,5 @@ loadBtn2.onclick = function () {
       displayImages(horses.photos);
     });
 };
+
+//Funzione per reindirizzamento dell'anchor
